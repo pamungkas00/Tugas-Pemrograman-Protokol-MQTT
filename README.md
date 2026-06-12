@@ -31,16 +31,14 @@ Pastikan Anda sudah menginstal **Mosquitto Broker** di komputer Anda.
 
 ### 2. Instalasi Library Python
 Buka terminal pada direktori proyek ini, aktifkan virtual environment Anda (jika ada), lalu instal dependensi library yang dibutuhkan:
-  ```bash
-  pip install paho-mqtt
+  ```bashpip install paho-mqtt```
 
 ## 💻 Cara Menjalankan Program
 Untuk melakukan pengujian, Anda disarankan membuka dua jendela terminal terpisah di komputer Anda.
 
 ### Langkah 1: Jalankan Subscriber (Penerima Data)
 Di Terminal 1, jalankan skrip subscriber untuk mulai mendengarkan data dari broker:
-  ```bash
-  python subscriber.py
+  ```bash python subscriber.py```
 
 
 ### Langkah 2: Jalankan Publisher (Pengirim Data/Sensor Node)
