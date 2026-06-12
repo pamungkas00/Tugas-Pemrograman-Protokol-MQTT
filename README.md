@@ -31,7 +31,7 @@ Pastikan Anda sudah menginstal **Mosquitto Broker** di komputer Anda.
 
 2. Instalasi Library Python
 Buka terminal pada direktori proyek ini, aktifkan virtual environment Anda (jika ada), lalu instal dependensi library yang dibutuhkan:
- ```bash
+    ```bash
   pip install paho-mqtt
 
 💻 Cara Menjalankan Program
