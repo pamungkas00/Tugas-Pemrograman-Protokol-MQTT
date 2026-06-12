@@ -56,15 +56,16 @@ Skenario 1: Komunikasi Dasar Publisher–Subscriber
 Tujuan: Membuktikan koneksi dasar 1-ke-1 pada topik spesifik.
 
 Konfigurasi subscriber.py:
-    ```python
+    ```bash
     client.subscribe("smart_agri/field1/sensor/temperature", qos=0)
+
 Hasil: Subscriber hanya akan menerima data dari sensor suhu saja
 
 Skenario 2 & 3: QoS Berbeda & Penggunaan Beberapa Topik
 Tujuan: Membuktikan pengiriman data ke jalur terpisah dengan keandalan berbeda (Suhu = QoS 0, Kelembapan Udara = QoS 1, Kelembapan Tanah = QoS 2).
 
 Konfigurasi subscriber.py:
-    ``Python
+    ```bash
     client.subscribe("smart_agri/#", qos=2)
 
 Hasil: Perhatikan log terminal subscriber, baris QoS : X dan Topik : ... akan berubah secara dinamis sesuai karakteristik masing-masing sensor.
@@ -73,8 +74,9 @@ Skenario 4: Penggunaan Wildcard + (Single-Level)
 Tujuan: Menyaring data satu level hirarki (contoh: mengambil data suhu dari lahan (field) mana saja).
 
 Konfigurasi subscriber.py:
-    ```Python
+    ```bash
     client.subscribe("smart_agri/+/sensor/temperature", qos=1)
+
 Hasil: Subscriber mengabaikan data kelembapan udara dan tanah, namun siap menerima data suhu dari field1, field2, dst.
 
 
@@ -82,6 +84,7 @@ Skenario 5: Penggunaan Wildcard # (Multi-Level)
 Tujuan: Menerima seluruh data sensor secara massal di bawah bendera topik utama.
 
 Konfigurasi subscriber.py:
-    ```Python
+    ```bash
     client.subscribe("smart_agri/#", qos=2)
+
 Hasil: Seluruh payload JSON dari semua sensor akan tertangkap secara berurutan dan simultan.
