@@ -31,8 +31,9 @@ Pastikan Anda sudah menginstal **Mosquitto Broker** di komputer Anda.
 
 ### 2. Instalasi Library Python
 Buka terminal pada direktori proyek ini, aktifkan virtual environment Anda (jika ada), lalu instal dependensi library yang dibutuhkan:
-  ``bash
+  `
   net start mosquitto
+  '
 
 ## 💻 Cara Menjalankan Program
 Untuk melakukan pengujian, Anda disarankan membuka dua jendela terminal terpisah di komputer Anda.
