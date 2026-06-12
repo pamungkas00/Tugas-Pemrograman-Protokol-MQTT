@@ -31,20 +31,22 @@ Pastikan Anda sudah menginstal **Mosquitto Broker** di komputer Anda.
 
 ### 2. Instalasi Library Python
 Buka terminal pada direktori proyek ini, aktifkan virtual environment Anda (jika ada), lalu instal dependensi library yang dibutuhkan:
-  ```bashpip install paho-mqtt```
+  ``bash
+  net start mosquitto
 
 ## 💻 Cara Menjalankan Program
 Untuk melakukan pengujian, Anda disarankan membuka dua jendela terminal terpisah di komputer Anda.
 
 ### Langkah 1: Jalankan Subscriber (Penerima Data)
 Di Terminal 1, jalankan skrip subscriber untuk mulai mendengarkan data dari broker:
-  ```bash python subscriber.py```
+  ``bash
+  python subscriber.py
 
 
 ### Langkah 2: Jalankan Publisher (Pengirim Data/Sensor Node)
 Di Terminal 2, jalankan skrip publisher untuk mulai mensimulasikan dan mengirim data sensor secara berkala (setiap 5 detik):
-    ```bash
-     python publisher.py
+    ``bash
+    python publisher.py
 
 
 ## 🧪 Panduan Pengujian 5 Skenario
@@ -54,8 +56,8 @@ Skrip publisher.py secara default mengirimkan semua jenis data dengan tingkat Qo
 Tujuan: Membuktikan koneksi dasar 1-ke-1 pada topik spesifik.
 
 Konfigurasi subscriber.py:
-    ```bash
-     client.subscribe("smart_agri/field1/sensor/temperature", qos=0)
+    ``bash
+    client.subscribe("smart_agri/field1/sensor/temperature", qos=0)
 
 Hasil: Subscriber hanya akan menerima data dari sensor suhu saja
 
@@ -63,8 +65,8 @@ Hasil: Subscriber hanya akan menerima data dari sensor suhu saja
 Tujuan: Membuktikan pengiriman data ke jalur terpisah dengan keandalan berbeda (Suhu = QoS 0, Kelembapan Udara = QoS 1, Kelembapan Tanah = QoS 2).
 
 Konfigurasi subscriber.py:
-    ```bash
-     client.subscribe("smart_agri/#", qos=2)
+    ``bash
+    client.subscribe("smart_agri/#", qos=2)
 
 Hasil: Perhatikan log terminal subscriber, baris QoS : X dan Topik : ... akan berubah secara dinamis sesuai karakteristik masing-masing sensor.
 
@@ -72,8 +74,8 @@ Hasil: Perhatikan log terminal subscriber, baris QoS : X dan Topik : ... akan be
 Tujuan: Menyaring data satu level hirarki (contoh: mengambil data suhu dari lahan (field) mana saja).
 
 Konfigurasi subscriber.py:
-    ```bash
-     client.subscribe("smart_agri/+/sensor/temperature", qos=1)
+    ``bash
+    client.subscribe("smart_agri/+/sensor/temperature", qos=1)
 
 Hasil: Subscriber mengabaikan data kelembapan udara dan tanah, namun siap menerima data suhu dari field1, field2, dst.
 
@@ -82,7 +84,7 @@ Hasil: Subscriber mengabaikan data kelembapan udara dan tanah, namun siap meneri
 Tujuan: Menerima seluruh data sensor secara massal di bawah bendera topik utama.
 
 Konfigurasi subscriber.py:
-    ```bash
-     client.subscribe("smart_agri/#", qos=2)
+    ``bash
+    client.subscribe("smart_agri/#", qos=2)
 
 Hasil: Seluruh payload JSON dari semua sensor akan tertangkap secara berurutan dan simultan.
