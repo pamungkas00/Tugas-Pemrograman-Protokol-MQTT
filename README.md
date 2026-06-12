@@ -40,13 +40,13 @@ Untuk melakukan pengujian, Anda disarankan membuka dua jendela terminal terpisah
 Langkah 1: Jalankan Subscriber (Penerima Data)
 Di Terminal 1, jalankan skrip subscriber untuk mulai mendengarkan data dari broker:
     ```bash
-    python subscriber.py
+     python subscriber.py
 
 
 Langkah 2: Jalankan Publisher (Pengirim Data/Sensor Node)
 Di Terminal 2, jalankan skrip publisher untuk mulai mensimulasikan dan mengirim data sensor secara berkala (setiap 5 detik):
     ```bash
-    python publisher.py
+     python publisher.py
 
 
 🧪 Panduan Pengujian 5 Skenario
@@ -57,7 +57,7 @@ Tujuan: Membuktikan koneksi dasar 1-ke-1 pada topik spesifik.
 
 Konfigurasi subscriber.py:
     ```bash
-    client.subscribe("smart_agri/field1/sensor/temperature", qos=0)
+     client.subscribe("smart_agri/field1/sensor/temperature", qos=0)
 
 Hasil: Subscriber hanya akan menerima data dari sensor suhu saja
 
@@ -66,7 +66,7 @@ Tujuan: Membuktikan pengiriman data ke jalur terpisah dengan keandalan berbeda (
 
 Konfigurasi subscriber.py:
     ```bash
-    client.subscribe("smart_agri/#", qos=2)
+     client.subscribe("smart_agri/#", qos=2)
 
 Hasil: Perhatikan log terminal subscriber, baris QoS : X dan Topik : ... akan berubah secara dinamis sesuai karakteristik masing-masing sensor.
 
@@ -75,7 +75,7 @@ Tujuan: Menyaring data satu level hirarki (contoh: mengambil data suhu dari laha
 
 Konfigurasi subscriber.py:
     ```bash
-    client.subscribe("smart_agri/+/sensor/temperature", qos=1)
+     client.subscribe("smart_agri/+/sensor/temperature", qos=1)
 
 Hasil: Subscriber mengabaikan data kelembapan udara dan tanah, namun siap menerima data suhu dari field1, field2, dst.
 
@@ -85,6 +85,6 @@ Tujuan: Menerima seluruh data sensor secara massal di bawah bendera topik utama.
 
 Konfigurasi subscriber.py:
     ```bash
-    client.subscribe("smart_agri/#", qos=2)
+     client.subscribe("smart_agri/#", qos=2)
 
 Hasil: Seluruh payload JSON dari semua sensor akan tertangkap secara berurutan dan simultan.
